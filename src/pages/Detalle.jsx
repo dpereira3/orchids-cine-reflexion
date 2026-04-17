@@ -30,6 +30,7 @@ export default function Detalle() {
   if (!material) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-16 text-center">
+        <p className="text-6xl font-bold text-gray-200 mb-4">404</p>
         <p className="text-gray-500 mb-4">Material no encontrado.</p>
         <Link to="/" className="text-[#1e3a5f] hover:underline">← Volver al catálogo</Link>
       </div>
@@ -48,8 +49,8 @@ export default function Detalle() {
     <main className="max-w-3xl mx-auto px-4 py-6">
 
       {/* Volver */}
-      <Link to="/" className="no-print inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#1e3a5f] mb-4 transition-colors">
-        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <Link to="/" className="no-print inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-[#1e3a5f] mb-4 transition-colors" aria-label="Volver al catálogo">
+        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="15 18 9 12 15 6"/>
         </svg>
         Volver al catálogo
@@ -89,7 +90,7 @@ export default function Detalle() {
               {director && <DataRow label="Director/a" value={director} />}
               <DataRow label="País" value={pais} />
               {anio && <DataRow label="Año" value={anio} />}
-              <DataRow label="Duración" value={`${duracion} min`} />
+              <DataRow label="Duración" value={`${duracion} min`} />}
               <DataRow label="Género" value={tipo} />
               <DataRow label="Clasificación" value={clasificacion} />
               <DataRow label="Escenario" value={`${escenario} — ${ESCENARIO_DESC[escenario]}`} />
@@ -100,7 +101,7 @@ export default function Detalle() {
             {/* Premio */}
             {premioFestival && (
               <div className="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-4">
-                <svg className="w-4 h-4 text-amber-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-4 h-4 text-amber-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
                 <span className="text-sm text-amber-800">{premioFestival}</span>
@@ -110,8 +111,10 @@ export default function Detalle() {
             {/* Enlace YouTube */}
             {enlace && (
               <a href={enlace} target="_blank" rel="noopener noreferrer"
-                className="no-print inline-flex items-center gap-2 text-sm text-[#1e3a5f] hover:underline font-medium mb-4">
-                <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                className="no-print inline-flex items-center gap-2 text-sm text-[#1e3a5f] hover:underline font-medium mb-4"
+                aria-label={`Ver ${titulo} en YouTube`}
+              >
+                <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
                 Ver en YouTube / buscar material
@@ -145,7 +148,7 @@ export default function Detalle() {
           <p className="text-sm text-gray-700 leading-relaxed">{sinopsis}</p>
           {contenidoSensible && (
             <div className="mt-3 flex items-start gap-2 bg-orange-50 border border-orange-200 rounded-lg p-3">
-              <svg className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="w-4 h-4 text-orange-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
                 <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
@@ -156,15 +159,15 @@ export default function Detalle() {
 
         {/* ── Secciones pedagógicas ── */}
         {ficha === undefined ? (
-          <div className="text-center py-8 text-gray-400 text-sm">Cargando ficha pedagógica…</div>
+          <div className="text-center py-8 text-gray-400 text-sm" aria-live="polite">Cargando ficha pedagógica…</div>
         ) : ficha === null ? (
           <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-sm text-amber-800 flex items-start gap-3">
-            <svg className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             <div>
               <p className="font-semibold">Ficha pedagógica en elaboración</p>
-              <p className="text-amber-700 mt-0.5">Las actividades para este material aún no han sido cargadas. Podés generarlas usando el modelo <code className="bg-amber-100 px-1 rounded text-xs">FICHA_SCHEMA.json</code> y guardar el resultado en <code className="bg-amber-100 px-1 rounded text-xs">src/data/fichas/{id}.json</code>.</p>
+              <p className="text-amber-700 mt-0.5">Las actividades para este material aún no han sido cargadas.</p>
             </div>
           </div>
         ) : (
@@ -224,8 +227,9 @@ export default function Detalle() {
                     <div className="flex flex-col gap-1.5">
                       {ficha.notasDocente.enlacesAdicionales.map((e, i) => (
                         <a key={i} href={e.url} target="_blank" rel="noopener noreferrer"
-                          className="no-print inline-flex items-center gap-2 text-sm text-[#1e3a5f] hover:underline">
-                          <svg className="w-3.5 h-3.5 text-red-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                          className="no-print inline-flex items-center gap-2 text-sm text-[#1e3a5f] hover:underline"
+                        >
+                          <svg className="w-3.5 h-3.5 text-red-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                           </svg>
                           {e.label}
@@ -254,8 +258,9 @@ export default function Detalle() {
           <button
             onClick={() => window.print()}
             className="flex items-center gap-2 bg-[#1e3a5f] text-white text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-[#16304f] transition-colors shadow-sm"
+            aria-label="Imprimir o descargar como PDF la ficha pedagógica"
           >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <polyline points="6 9 6 2 18 2 18 9"/>
               <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
               <rect x="6" y="14" width="12" height="8"/>
@@ -263,7 +268,7 @@ export default function Detalle() {
             Imprimir / Descargar PDF
           </button>
         )}
-        <Link to="/" className="flex items-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-gray-50 transition-colors">
+        <Link to="/" className="flex items-center gap-2 border border-gray-200 text-gray-600 text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-gray-50 transition-colors" aria-label="Volver al catálogo">
           ← Volver al catálogo
         </Link>
       </div>
