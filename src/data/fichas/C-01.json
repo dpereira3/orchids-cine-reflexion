@@ -1,0 +1,53 @@
+{
+  "id": "C-01",
+
+  "antesDeVer": {
+    "intro": "Antes de comenzar la proyección, planteá al grupo alguna de estas preguntas para abrir el tema:",
+    "preguntas": [
+      "¿Qué sabés sobre África? ¿Qué imágenes o ideas te vienen a la cabeza cuando escuchás esa palabra?",
+      "¿Alguna vez resolviste un problema con pocos recursos, usando la creatividad? ¿Qué hiciste?",
+      "¿Para qué creés que sirve estudiar? ¿Qué pasaría si no pudieras ir a la escuela?"
+    ],
+    "consignaObservacion": "Durante la película, prestá atención a cómo reacciona el papá de William cada vez que su hijo propone una idea nueva."
+  },
+
+  "despuesBasico": {
+    "intro": "Preguntas orientadas a la experiencia personal y comprensión del relato:",
+    "preguntas": [
+      "¿Qué momento de la película te impactó más? ¿Por qué?",
+      "¿Qué sentiste al ver cómo William y su familia pasaban hambre? ¿Pensabas que eso podía ocurrir hoy en el mundo?",
+      "William siguió estudiando aunque lo echaron de la escuela. ¿Vos cómo te comportarías en esa situación?",
+      "¿Por qué crees que el papá de William tardó tanto en creerle? ¿Conocés situaciones parecidas en tu entorno?",
+      "Si pudieras cambiar algo de la historia, ¿qué sería? ¿Cómo hubiera terminado?"
+    ]
+  },
+
+  "despuesSuperior": {
+    "intro": "Preguntas orientadas al análisis crítico y la conexión con contenidos curriculares:",
+    "preguntas": [
+      "¿Qué factores —económicos, políticos, climáticos— explican la hambruna en Malaui? ¿Podrían haberse evitado?",
+      "La película muestra roles de género muy marcados. ¿Qué lugar ocupa la mujer en esa sociedad? ¿Qué opinás?",
+      "William usa el conocimiento científico disponible (libros, física básica) para resolver un problema real. ¿Qué implica esto para la relación entre educación y desarrollo?",
+      "¿Qué responsabilidad tiene el Estado frente a la hambruna que muestra la película? ¿Y la comunidad internacional?",
+      "¿Qué preguntas te quedaron sin respuesta después de ver el film? ¿Cómo las investigarías?"
+    ]
+  },
+
+  "notasDocente": {
+    "contenidoSensible": "La película contiene escenas de hambruna, violencia menor (funcionarios golpean a un aldeano) y una situación de invasión a una vivienda. Se recomienda una breve contextualización previa.",
+    "sugerenciaUsoParcial": "Con 113 minutos, está pensada para el escenario de 2 módulos. Si solo hay 1 módulo disponible, puede proyectarse el primer tercio (~35 min) y dejar el resto para otra sesión.",
+    "actividadesComplementarias": [
+      "Buscar en YouTube el TED Talk de William Kamkwamba (6 min, subtitulado) para contrastar la ficción con su testimonio real."
+    ],
+    "enlacesAdicionales": [
+      {
+        "label": "Tráiler oficial",
+        "url": "https://www.youtube.com/watch?v=0WKEbB4T6FE"
+      },
+      {
+        "label": "TED Talk de William Kamkwamba",
+        "url": "https://www.youtube.com/watch?v=arD374MFk4w"
+      }
+    ]
+  }
+}

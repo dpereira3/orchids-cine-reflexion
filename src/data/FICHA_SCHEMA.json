@@ -1,0 +1,64 @@
+{
+  "_instrucciones": [
+    "Este archivo define el esquema que debe respetar cada ficha pedagógica.",
+    "El archivo de cada ficha se guarda en src/data/fichas/{ID}.json (ej: A-01.json, B-03.json, C-07.json).",
+    "El campo 'id' debe coincidir exactamente con el id del material en catalogo.json.",
+    "Todos los campos de texto deben estar en español.",
+    "Las preguntas NO llevan numeración en el texto (la UI la agrega automáticamente).",
+    "Si una sección no aplica o está vacía, usar null para strings y [] para arrays.",
+    "Los campos marcados con (*) son OBLIGATORIOS. El resto es opcional pero recomendado."
+  ],
+
+  "id": "X-00",
+
+  "antesDeVer": {
+    "_descripcion": "Activación de saberes previos. Se presenta ANTES de la proyección.",
+    "intro": "Texto introductorio breve para el docente/preceptor. Puede ser null.",
+    "preguntas": [
+      "(*) Pregunta 1 — conectar con experiencia previa del alumno.",
+      "(*) Pregunta 2 — abrir el tema central del material.",
+      "(*) Pregunta 3 — disparador emocional o de opinión."
+    ],
+    "consignaObservacion": "(*) Una sola consigna concreta: un personaje, escena, símbolo o situación a la que prestar atención DURANTE la proyección."
+  },
+
+  "despuesBasico": {
+    "_descripcion": "Guía de trabajo para Ciclo Básico (13 a 15 años, 1° a 3° año). Orientada a experiencia personal y comprensión del relato.",
+    "intro": "Texto introductorio opcional para el docente. Puede ser null.",
+    "preguntas": [
+      "(*) Pregunta 1 — impacto emocional: ¿qué sintieron, qué momento los impactó más?",
+      "(*) Pregunta 2 — empatía con personajes: ¿cómo se hubieran sentido ellos?",
+      "(*) Pregunta 3 — conexión con experiencia propia o entorno cercano.",
+      "(*) Pregunta 4 — comprensión del mensaje o moraleja de la obra.",
+      "(*) Pregunta 5 — imaginación o propuesta de cambio: ¿qué hubieran hecho diferente?"
+    ]
+  },
+
+  "despuesSuperior": {
+    "_descripcion": "Guía de trabajo para Ciclo Superior (16 a 18 años, 4° a 6° año). Orientada al análisis crítico y conexión curricular.",
+    "intro": "Texto introductorio opcional para el docente. Puede ser null.",
+    "preguntas": [
+      "(*) Pregunta 1 — contexto histórico, social, político o cultural de la obra.",
+      "(*) Pregunta 2 — postura ideológica, ética o de género presente en el material.",
+      "(*) Pregunta 3 — vinculación con contenidos curriculares (mencionar asignatura).",
+      "(*) Pregunta 4 — responsabilidad de actores sociales (Estado, comunidad, individuo).",
+      "(*) Pregunta 5 — preguntas abiertas e invitación a investigar más."
+    ]
+  },
+
+  "notasDocente": {
+    "_descripcion": "Información para el docente o preceptor que facilita el uso del material.",
+    "contenidoSensible": "Descripción de escenas o temas que requieren preparación previa del grupo. null si no aplica.",
+    "sugerenciaUsoParcial": "Indicaciones si el material es largo y puede proyectarse en fragmentos o dividirse en sesiones. null si no aplica.",
+    "actividadesComplementarias": [
+      "Descripción de actividad 1 (lectura, video corto, búsqueda, debate, etc.).",
+      "Descripción de actividad 2."
+    ],
+    "enlacesAdicionales": [
+      {
+        "label": "Nombre descriptivo del enlace (ej: Tráiler oficial, TED Talk, Documental relacionado)",
+        "url": "https://..."
+      }
+    ]
+  }
+}
