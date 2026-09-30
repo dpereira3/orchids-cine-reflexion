@@ -4,9 +4,9 @@ import MaterialCard from '../components/MaterialCard'
 import FilterBar from '../components/FilterBar'
 
 const ESCENARIO_INFO = {
-  A: { label: 'Escenario A', desc: '1 módulo faltante · hasta 20 min', color: 'border-emerald-400' },
-  B: { label: 'Escenario B', desc: '2 módulos consecutivos · 21 a 60 min', color: 'border-blue-400' },
-  C: { label: 'Escenario C', desc: 'Acto escolar o jornada especial · largometraje', color: 'border-purple-400' },
+  A: { label: 'Escenario A', desc: '1 módulo faltante · hasta 20 min' },
+  B: { label: 'Escenario B', desc: '2 módulos consecutivos · 21 a 60 min' },
+  C: { label: 'Escenario C', desc: 'Acto escolar o jornada especial · largometraje' },
 }
 
 function normalize(str) {
@@ -46,68 +46,111 @@ export default function Catalogo() {
   const grouping = filters.escenario || filters.query || filters.nivel || filters.clasificacion
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-6">
-      {/* Hero banner */}
-      <div className="bg-[#1e3a5f] text-white rounded-2xl px-5 py-6 mb-6">
-        <h1 className="text-xl sm:text-2xl font-bold mb-1">Catálogo de Materiales Audiovisuales</h1>
-        <p className="text-blue-200 text-sm leading-relaxed max-w-2xl">
-          Películas, cortometrajes y documentales seleccionados para trabajar temas transversales
-          en horas libres. Cada material incluye ficha pedagógica con actividades para Ciclo Básico
-          y Ciclo Superior.
-        </p>
-        <div className="flex flex-wrap gap-3 mt-4">
-          {Object.entries(ESCENARIO_INFO).map(([k, v]) => (
+    <>
+      {/* ── HERO ── */}
+      <section className="hero-section" id="inicio">
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-content">
+          <div className="eyebrow"><span /> PROYECTO CINE Y REFLEXIÓN · 2026</div>
+          <h1>Catálogo<br /><em>audiovisual.</em></h1>
+          <p>
+            Películas, cortometrajes y documentales seleccionados para trabajar temas transversales
+            en horas libres. Cada material incluye ficha pedagógica con actividades para
+            Ciclo Básico y Ciclo Superior.
+          </p>
+          <p className="hero-institution">
+            Un recurso del Laboratorio de Informática de la E.E.S. N.º 2 “Perito Francisco P. Moreno” · Berisso.
+          </p>
+          <div className="hero-actions">
             <button
-              key={k}
-              onClick={() => setFilters(f => ({ ...f, escenario: f.escenario === k ? '' : k }))}
-              className={`flex items-start gap-2 bg-white/10 hover:bg-white/20 border-l-4 ${v.color} rounded-lg px-3 py-2 text-left transition-colors ${filters.escenario === k ? 'bg-white/20 ring-1 ring-white/40' : ''}`}
+              type="button"
+              className="hero-cta"
+              onClick={() => document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              <div>
-                <div className="text-xs font-bold">{v.label}</div>
-                <div className="text-xs text-blue-200 leading-tight">{v.desc}</div>
-              </div>
+              Explorar catálogo
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7" /><path d="M8 7h9v9" />
+              </svg>
             </button>
-          ))}
+            <span className="ficha-counter">{catalogo.length} materiales · 3 escenarios</span>
+          </div>
         </div>
-      </div>
+        <div className="hero-orbit" aria-hidden="true">
+          <div /><div /><div /><span>02</span>
+        </div>
+      </section>
 
-      {/* Filters */}
-      <FilterBar
-        filters={filters}
-        onChange={setFilters}
-        total={catalogo.length}
-        filtered={filtered.length}
-      />
+      {/* ── INTRO ── */}
+      <section className="intro-section">
+        <span className="section-kicker">UN ESPACIO PARA COMPARTIR</span>
+        <p>
+          Este catálogo reúne materiales audiovisuales con su ficha pedagógica, pensados para
+          escenarios reales de la escuela: un módulo libre, dos módulos seguidos o un acto escolar.
+        </p>
+        <p>
+          Elegí un escenario según el tiempo disponible y encontrá actividades listas para
+          imprimir antes de la proyección.
+        </p>
+      </section>
 
-      {/* Results */}
-      {filtered.length === 0 ? (
-        <div className="text-center py-16 text-gray-400">
-          <svg className="w-12 h-12 mx-auto mb-3 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
-          <p className="font-medium">Sin resultados para esa búsqueda</p>
-          <button onClick={() => setFilters({ escenario: '', nivel: '', clasificacion: '', query: '' })} className="text-sm text-[#1e3a5f] mt-2 hover:underline">
-            Limpiar filtros
-          </button>
+      {/* ── CATÁLOGO ── */}
+      <section className="catalog-section" id="catalogo">
+        <div className="section-heading">
+          <div>
+            <span className="section-kicker">CATÁLOGO DIGITAL</span>
+            <h2>
+              Todo lo que necesitás,<br /><em>en un solo lugar.</em>
+            </h2>
+          </div>
+          <p className="section-note">
+            Materiales seleccionados para<br />aprender, reflexionar y compartir.
+          </p>
         </div>
-      ) : grouping ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filtered.map(m => <MaterialCard key={m.id} material={m} />)}
-        </div>
-      ) : (
-        ['A', 'B', 'C'].map(esc => groupByEscenario[esc].length > 0 && (
-          <section key={esc} className="mb-8">
-            <div className={`flex items-center gap-3 mb-3 pb-2 border-b-2 ${esc === 'A' ? 'border-emerald-400' : esc === 'B' ? 'border-blue-400' : 'border-purple-400'}`}>
-              <h2 className="text-base font-bold text-[#1e3a5f]">{ESCENARIO_INFO[esc].label}</h2>
-              <span className="text-sm text-gray-500">{ESCENARIO_INFO[esc].desc}</span>
-              <span className="ml-auto text-xs text-gray-400">{groupByEscenario[esc].length} materiales</span>
+
+        <FilterBar
+          filters={filters}
+          onChange={setFilters}
+          total={catalogo.length}
+          filtered={filtered.length}
+        />
+
+        {filtered.length === 0 ? (
+          <div className="empty-state" style={{ marginTop: 40 }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <h3>Sin resultados para esa búsqueda</h3>
+            <p>Probá con otro término o limpiá los filtros.</p>
+            <button className="retry-button" onClick={() => setFilters({ escenario: '', nivel: '', clasificacion: '', query: '' })}>
+              Limpiar filtros
+            </button>
+          </div>
+        ) : grouping ? (
+          <>
+            <div className="catalog-meta" style={{ marginBottom: 24 }}>
+              <span>{filtered.length} de {catalogo.length} materiales</span>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {groupByEscenario[esc].map(m => <MaterialCard key={m.id} material={m} />)}
+            <div className="resource-grid">
+              {filtered.map(m => <MaterialCard key={m.id} material={m} />)}
             </div>
-          </section>
-        ))
-      )}
-    </main>
+          </>
+        ) : (
+          ['A', 'B', 'C'].map((esc, i) => groupByEscenario[esc].length > 0 && (
+            <section key={esc} className="escenario-section">
+              <div className="subsection-title">
+                <span>0{i + 1}</span>
+                <h2>{ESCENARIO_INFO[esc].label}</h2>
+                <small style={{ color: 'var(--muted)', fontSize: 10, marginLeft: 'auto' }}>
+                  {ESCENARIO_INFO[esc].desc} · {groupByEscenario[esc].length} materiales
+                </small>
+              </div>
+              <div className="resource-grid">
+                {groupByEscenario[esc].map(m => <MaterialCard key={m.id} material={m} />)}
+              </div>
+            </section>
+          ))
+        )}
+      </section>
+    </>
   )
 }
